@@ -1,4 +1,3 @@
-'''
 for element in range(1, 20):
     print(element)
 
@@ -27,7 +26,7 @@ for key in product:
 for key, value in product.items():
     print(key, '=>', value)
 
-'''
+
 
 people = [
     {
