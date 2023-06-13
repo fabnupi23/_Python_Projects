@@ -7,41 +7,72 @@ import random #importamos esta liberia, este módulo implementa generadores de n
 #Vamos a crear una tupla para estas opciones
 options = ('piedra', 'papel', 'tijera')
 
+computer_wins = 0
+user_wins = 0
 
-#Primero creamos dos variables 
+rounds = 1
 
-user_option = input('piedra, papel o tijera => ')   #Leemos la opción del usuario
-user_option = user_option.lower() #Pasamos todo a minuscula
+while True:
 
-if not user_option in options:
-    print('Esa opción no es valida')
+    print('*' * 10)
+    print('Round', rounds)
+    print('*' * 10)
+
+    print('computer_wins', computer_wins)
+    print('user_wins', user_wins)
+
+    #Primero creamos dos variables 
+
+    user_option = input('piedra, papel o tijera => ')   #Leemos la opción del usuario
+    user_option = user_option.lower() #Pasamos todo a minuscula
+
+    rounds += 1
+
+    if not user_option in options:
+        print('Esa opción no es valida')
+        continue
 
 
-computer_option = random.choice(options)  #La computadora tiene la opción piedra para siempre, con la implementación de Random se generara una opción aleatoria 
+    computer_option = random.choice(options)  #La computadora tiene la opción piedra para siempre, con la implementación de Random se generara una opción aleatoria 
 
-print('User Options => ', user_option)
-print('Computer Options => ', computer_option)
+    print('User Options => ', user_option)
+    print('Computer Options => ', computer_option)
 
-if user_option == computer_option:
-    print('Empate!')
-elif user_option == 'piedra':
-    if computer_option == 'tijera':
-        print('Piedra gana a tijera')
-        print('User gano¡')
-    else:
-        print('Papel gana a piedra')
-        print('Computer gano¡')
-elif user_option == 'papel':
-    if computer_option == 'piedra':
-        print('Papel gana a piedra')
-        print('User gano¡')
-    else:
-        print('Tijera gana a papel')
-        print('Computador gano¡')
-elif user_option == 'tijeras':
-    if computer_option == 'papel':
-        print('Tijera gana a papel')
-        print('User gano¡')
-    else: 
-        print('Piedra gana a tijera')
-        print('Computer gano¡')
+    if user_option == computer_option:
+        print('Empate!')
+    elif user_option == 'piedra':
+        if computer_option == 'tijera':
+            print('Piedra gana a tijera')
+            print('User gano¡')
+            user_wins += 1
+        else:
+            print('Papel gana a piedra')
+            print('Computer gano¡')
+            computer_wins += 1
+    elif user_option == 'papel':
+        if computer_option == 'piedra':
+            print('Papel gana a piedra')
+            print('User gano¡')
+            user_wins += 1
+        else:
+            print('Tijera gana a papel')
+            print('Computador gano¡')
+            computer_wins += 1
+    elif user_option == 'tijeras':
+        if computer_option == 'papel':
+            print('Tijera gana a papel')
+            print('User gano¡')
+            user_wins += 1
+        else: 
+            print('Piedra gana a tijera')
+            print('Computer gano¡')
+            computer_wins += 1
+
+    if computer_wins == 2:
+        print('El rotundo ganador es la computadora')
+        break
+    if user_wins == 2:
+        print('El rotundo ganador es la computadora')
+        break
+        
+    
